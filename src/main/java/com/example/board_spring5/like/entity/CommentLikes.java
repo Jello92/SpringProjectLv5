@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Like {
+public class CommentLikes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LIKE_ID")
@@ -30,13 +30,7 @@ public class Like {
     @JoinColumn (name = "COMMENT_ID")
     private Comment comment;
 
-    public Like (Users users, Board board){
-        this.users = users;
-        this.board = board;
-        this.comment = null;
-    }
-
-    public Like (Users users, Board board, Comment comment) {
+    public CommentLikes(Users users, Board board, Comment comment) {
         this.users = users;
         this.board = board;
         this.comment = comment;
