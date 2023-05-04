@@ -51,12 +51,10 @@ public class Board extends Timestamped { // Timestamped 상속 (createdAt, Modif
     }
 
     public void undoLike() {
-        if(likeCount -1 < 0) return;
         likeCount -= 1;
     }
 
     public void btnLike() {
-        if(likeCount -1 < 0) return;;
         likeCount += 1;
     }
 }

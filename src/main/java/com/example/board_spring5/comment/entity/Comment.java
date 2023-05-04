@@ -31,6 +31,10 @@ public class Comment extends Timestamped {
     @JoinColumn(name = "BOARD_ID", nullable = false)
     private Board board;
 
+    @Column
+    private int likeCount;
+
+
     public Comment (CommentRequestDto commentRequestDto){
         this.comment = commentRequestDto.getComment();
     }
@@ -42,5 +46,13 @@ public class Comment extends Timestamped {
 
     public void setUsers(Users users){
         this.users = users;
+    }
+
+    public void undoLike() {
+        likeCount -= 1;
+    }
+
+    public void btnLike() {
+        likeCount += 1;
     }
 }

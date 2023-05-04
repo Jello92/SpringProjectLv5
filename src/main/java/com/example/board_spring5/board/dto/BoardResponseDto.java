@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @Getter // generates getters for the fields in the class automatically
 public class BoardResponseDto { // implements InterfaceDto which means that this class much implement all the methods defined in the InterfaceDto
 // Client에게 반환될 때 전달되는 Data
@@ -14,9 +15,12 @@ public class BoardResponseDto { // implements InterfaceDto which means that this
     private final String title;
     private final String content;
     private final String username;
+    private int likeCount;
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
     private List<CommentResponseDto> commentList; // 댓글도 추가적으로 반환해줘야 하기떄문에 CommentList 추가
+
+
 
     public BoardResponseDto(Board board){
         this.id = board.getId();
@@ -25,6 +29,8 @@ public class BoardResponseDto { // implements InterfaceDto which means that this
         this.content = board.getContent();
         this.createdAt = board.getCreatedAt();
         this.modifiedAt = board.getModifiedAt();
+        this.likeCount = board.getLikeCount();
+
     }
     public BoardResponseDto(Board board, List<CommentResponseDto> commentList){
     // Board Entity의 데이터와 해당 Board의 게시물과 관련된 댓글 목록 포함
@@ -34,6 +40,7 @@ public class BoardResponseDto { // implements InterfaceDto which means that this
         this.content = board.getContent();
         this.createdAt = board.getCreatedAt();
         this.modifiedAt = board.getModifiedAt();
+        this.likeCount = board.getLikeCount();
         this.commentList = commentList;
     }
 }
